@@ -5,13 +5,13 @@
         <i class="icon service"></i>
         <span class="text">客服</span>
       </div>
-      <div>
+      <div >
         <i class="icon shop"></i>
         <span class="text">店铺</span>
       </div>
       <div>
-        <i class="icon select"></i>
-        <span class="text">收藏</span>
+        <i class="icon select" @click="colorChange" :style="{color:changecolor}"></i>
+        <span class="text" @click="colorChange" :style="{background:changecolor,color:fnotcolor}">收藏</span>
       </div>
     </div>
     <div class="bar-item bar-right ">
@@ -24,10 +24,20 @@
 <script>
 export default {
   name: "DetailBottomBar",
+ data () {
+   return {
+     changecolor:"#fff",
+     fnotcolor:"#666666"
+   }
+ },
   methods: {
     addToCart () {
       // console.log("发送到购物车");
       this.$emit('addToCart')
+    },
+    colorChange(){
+      this.changecolor='yellow'
+      this.fnotcolor='#fff'
     }
   }
 };
